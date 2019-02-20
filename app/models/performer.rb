@@ -1,0 +1,2 @@
+class Performer < ApplicationRecord
+end
