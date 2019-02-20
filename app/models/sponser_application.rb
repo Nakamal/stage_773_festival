@@ -1,0 +1,2 @@
+class SponserApplication < ApplicationRecord
+end
