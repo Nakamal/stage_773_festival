@@ -1,0 +1,2 @@
+class FestivalApplication < ApplicationRecord
+end
