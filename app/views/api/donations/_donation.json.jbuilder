@@ -1,0 +1,1 @@
+_donation.json.jbuilder
