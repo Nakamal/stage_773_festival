@@ -1,5 +1,7 @@
 class Api::DonationsController < ApplicationController
   def index
+    @donation = Donation.all
+
     render 'index.json.jbuilder'
   end
 
@@ -8,14 +10,20 @@ class Api::DonationsController < ApplicationController
   end
 
   def show
+    @donation = Donation.find(params[:id])
+
     render 'show.json.jbuilder'
   end
 
   def update
+    @donation = Donation.find(params[:id])
+
     render 'show.json.jbuilder'
   end
 
   def destroy
+    @donation = Donation.find(params[:id])
+    
     render json: {message: "Successfully Destroyed!"}
   end
 end
