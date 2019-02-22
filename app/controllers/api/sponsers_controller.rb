@@ -1,6 +1,7 @@
 class Api::SponsersController < ApplicationController
   def index
     @sponsers = Sponser.all
+    
     render 'index.json.jbuilder'
   end
 
@@ -22,7 +23,7 @@ class Api::SponsersController < ApplicationController
 
   def destroy
     @sponser = Sponser.find(params[:id])
-    
+
     render json: {message: "Successfully Destroyed!"}
   end
 end
