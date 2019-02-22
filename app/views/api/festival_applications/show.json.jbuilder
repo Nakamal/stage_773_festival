@@ -1,0 +1,1 @@
+json.partial! @festival_application, partial: "festival_application", as: :festival_application

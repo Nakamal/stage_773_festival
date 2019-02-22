@@ -1,1 +1,1 @@
-show.json.jbuilder
+json.partial! @event, partial: "event", as: :event

@@ -1,1 +1,1 @@
-index.json.jbuilder
+json.array! @schedule_slots, partial: "schedule_slot", as: :schedule_slot

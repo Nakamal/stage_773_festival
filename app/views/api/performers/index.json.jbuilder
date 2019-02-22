@@ -1,1 +1,1 @@
-index.json.jbuilder
+json.array! @performers, partial: "performer", as: :performer

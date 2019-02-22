@@ -1,1 +1,1 @@
-index.json.jbuilder
+json.array! @festivals, partial: "festival", as: :festival

@@ -1,1 +1,1 @@
-index.json.jbuilder
+json.array! @festival_applications, partial: "festival_application", as: :festival_application

@@ -1,1 +1,1 @@
-index.json.jbuilder
+json.array! @donations, partial: "donation", as: :donation

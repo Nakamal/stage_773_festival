@@ -1,1 +1,1 @@
-show.json.jbuilder
+json.partial! @sponser, partial: "sponser", as: :sponser

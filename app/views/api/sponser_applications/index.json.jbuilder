@@ -1,1 +1,1 @@
-index.json.jbuilder
+json.array! @sponser_applications, partial: "sponser_application", as: :sponser_application

@@ -1,1 +1,1 @@
-show.json.jbuilder
+json.partial! @performer, partial: "performer", as: :performer
