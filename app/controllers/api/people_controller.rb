@@ -6,24 +6,61 @@ class Api::PeopleController < ApplicationController
   end
 
   def create
-    render 'show.json.jbuilder'
+    if current_user && current_user.admin
+      
+      @people = Person.new(
+                            name: params[:name],
+                            email: params[:email],
+                            password_digest: params[:password_digest],
+                            bio: params[:bio],
+                            title: params[:title],
+                            staff: params[:staff],
+                            phone_public: params[:phone_public],
+                            email_public: params[:email_public],
+                            performer: params[:performer],
+                            phone: params[:phone]
+                            )
+      if @people.save 
+        render 'show.json.jbuilder'
+      else
+        render json: { errors: @people.errors.full_messages }, status: :unprocessable_entity
+      end
+    else
+      render json: {}, status: :unauthorized  
+    end
   end
 
   def show
     @person = Person.find(params[:id])
-    
     render 'show.json.jbuilder'
   end
 
   def update
-    @person = Person.find(params[:id])
+    @people = Person.find(params[:id])
+
+    @people.name = params[:name] || @people.name
+    @people.email = params[:email] || @people.email
+    @people.password_digest = params[:password_digest] || @people.password_digest
+    @people.bio = params[:bio] || @people.bio
+    @people.title = params[:title] || @people.title
+    @people.staff = params[:staff] || @people.staff
+    @people.phone_public = params[:phone_public] || @people.phone_public
+    @people.email_public = params[:email_public] || @people.email_public
+    @people.performer = params[:performer] || @people.performer
+    @people.phone = params[:phone] || @people.phone
+
+    if @people.save
+      render "show.json.jbuilder"
+    else
+      render json: { errors: @people.errors.full_messages }, status: :unprocessable_entity
+    end
 
     render 'show.json.jbuilder'
   end
 
   def destroy
     @person = Person.find(params[:id])
-
-    render json: {message: "Successfully Destroyed!"}
+    @person.destroy
+    render json: {message: "Person Removed"}
   end
 end
