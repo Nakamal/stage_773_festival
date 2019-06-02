@@ -6,7 +6,7 @@ class Api::SponsersController < ApplicationController
   end
 
   def create
-    if current_user && current_user.admin
+    if current_person && current_person.admin
       
       @sponser = Sponser.new(
                             name: params[:name],

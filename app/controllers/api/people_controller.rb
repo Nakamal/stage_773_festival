@@ -6,7 +6,7 @@ class Api::PeopleController < ApplicationController
   end
 
   def create
-    if current_user && current_user.admin
+    if current_person && current_person.admin
       
       @people = Person.new(
                             name: params[:name],

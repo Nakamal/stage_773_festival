@@ -6,7 +6,7 @@ class Api::FestivalApplicationsController < ApplicationController
   end
 
   def create
-    if current_user && current_user.admin
+    if current_person && current_person.admin
       
       @festival_application = FestivalApplication.new(
                             confirmation_code: params[:confirmation_code],
@@ -33,7 +33,7 @@ class Api::FestivalApplicationsController < ApplicationController
                             promo_video_link: params[:promo_video_link]
                             )
       if @festival_application.save 
-        render "show.json.jbuilder"
+        render 'show.json.jbuilder'
       else
         render json: { errors: @festival_application.errors.full_messages }, status: :unprocessable_entity
       end
@@ -74,7 +74,7 @@ class Api::FestivalApplicationsController < ApplicationController
     @festival_application.promo_video_link = params[:promo_video_link] || @festival_application.promo_video_link
 
     if @festival_application.save
-      render "show.json.jbuilder"
+      render 'show.json.jbuilder'
     else
       render json: { errors: @festival_application.errors.full_messages }, status: :unprocessable_entity
     end

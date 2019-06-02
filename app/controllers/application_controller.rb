@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 
-  # def current_user
+  # def current_person
   #   auth_headers = request.headers['Authorization']
   #   if auth_headers.present? && auth_headers[/(?<=\A(Bearer ))\S+\z/]
   #     token = auth_headers[/(?<=\A(Bearer ))\S+\z/]
@@ -13,17 +13,17 @@ class ApplicationController < ActionController::Base
   #                                   { algorithm: 'HS256' }
   #                                 )
         
-  #       User.find_by(id: decoded_token[0]["user_id"])
+  #       Person.find_by(id: decoded_token[0]["person_id"])
   #     rescue JWT::ExpiredSignature
   #       nil
   #     end
   #   end
   # end  
   
-  # helper_method :current_user 
+  # helper_method :current_person 
 
   # def authenticate_admin
-  #   unless current_user && current_user.authenticate_admin
+  #   unless current_person && current_person.authenticate_admin
   #     render json: {}, status: :unauthorized
   #   end
   # end

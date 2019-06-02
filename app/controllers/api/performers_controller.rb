@@ -6,7 +6,7 @@ class Api::PerformersController < ApplicationController
   end
 
   def create
-    if current_user && current_user.admin
+    if current_person && current_person.admin
       
       @performer = Performer.new(
                             festival_application_id: params[:festival_application_id],
@@ -36,12 +36,10 @@ class Api::PerformersController < ApplicationController
     @performer.role = params[:role] || @performer.role
 
     if @performer.save
-      render "show.json.jbuilder"
+      render 'show.json.jbuilder'
     else
       render json: { errors: @performer.errors.full_messages }, status: :unprocessable_entity
     end
-
-    render 'show.json.jbuilder'
   end
 
   def destroy

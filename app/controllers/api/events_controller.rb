@@ -6,7 +6,7 @@ class Api::EventsController < ApplicationController
   end
 
   def create
-    if current_user && current_user.admin
+    if current_person && current_person.admin
       
       @event = Event.new(
                             show: params[:show],
@@ -42,7 +42,7 @@ class Api::EventsController < ApplicationController
     @event.festival_id = params[:festival_id] || @event.festival_id
 
     if @event.save
-      render "show.json.jbuilder"
+      render 'show.json.jbuilder'
     else
       render json: { errors: @event.errors.full_messages }, status: :unprocessable_entity
     end

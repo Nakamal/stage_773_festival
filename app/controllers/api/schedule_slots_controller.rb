@@ -6,7 +6,7 @@ class Api::ScheduleSlotsController < ApplicationController
   end
 
   def create
-    if current_user && current_user.admin
+    if current_person && current_person.admin
       
       @schedule_slot = ScheduleSlot.new(
                             main_eventable_id: params[:main_eventable_id],
