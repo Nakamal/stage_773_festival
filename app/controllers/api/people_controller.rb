@@ -50,12 +50,10 @@ class Api::PeopleController < ApplicationController
     @people.phone = params[:phone] || @people.phone
 
     if @people.save
-      render "show.json.jbuilder"
+      render 'show.json.jbuilder'
     else
       render json: { errors: @people.errors.full_messages }, status: :unprocessable_entity
     end
-
-    render 'show.json.jbuilder'
   end
 
   def destroy
