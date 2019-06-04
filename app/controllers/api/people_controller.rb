@@ -18,7 +18,8 @@ class Api::PeopleController < ApplicationController
                             phone_public: params[:phone_public],
                             email_public: params[:email_public],
                             performer: params[:performer],
-                            phone: params[:phone]
+                            phone: params[:phone],
+                            admin: params[:admin]
                             )
       if @people.save 
         render 'show.json.jbuilder'
@@ -48,6 +49,7 @@ class Api::PeopleController < ApplicationController
     @people.email_public = params[:email_public] || @people.email_public
     @people.performer = params[:performer] || @people.performer
     @people.phone = params[:phone] || @people.phone
+    @people.admin = params[:admin] || @people.admin
 
     if @people.save
       render 'show.json.jbuilder'
